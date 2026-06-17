@@ -518,14 +518,16 @@
         font-size: 0.9rem;
         font-weight: 700;
       }
-      .food-other {
+      .food-other,
+      .activity-other {
         background: white;
         border: 2px solid var(--pink-light);
         border-radius: 18px;
         padding: 1rem;
         margin-top: 0.8rem;
       }
-      .food-other input {
+      .food-other input,
+      .activity-other input {
         width: 100%;
         border: none;
         outline: none;
@@ -916,6 +918,23 @@
           Đã chọn: <span class="counter-num" id="act-count">0</span> / 3
         </div>
         <div class="activities-grid" id="activities-grid"></div>
+        <div class="activity-other">
+          <div
+            style="
+              font-size: 0.8rem;
+              font-weight: 700;
+              color: var(--text-muted);
+              margin-bottom: 0.4rem;
+            "
+          >
+            ✨ Khác / Other
+          </div>
+          <input
+            type="text"
+            placeholder="Hoạt động khác..."
+            id="activity-other-input"
+          />
+        </div>
         <button
           class="btn btn-primary"
           style="width: 100%; margin-top: 1.2rem"
@@ -981,26 +1000,38 @@
         <h2>Anything I<br />should know?</h2>
         <p class="subtitle">Chia sẻ thêm một chút nhé 🥺</p>
         <div class="notes-hints">
-          <span class="hint-chip" onclick="addHint('Không ăn cay 🌶️')"
-            >Không ăn cay 🌶️</span
-          >
-          <span class="hint-chip" onclick="addHint('Dị ứng hải sản 🦐')"
-            >Dị ứng hải sản 🦐</span
-          >
-          <span class="hint-chip" onclick="addHint('Thích đi xa một chút 🚗')"
-            >Thích đi xa 🚗</span
-          >
-          <span class="hint-chip" onclick="addHint('Muốn thử chỗ mới ✨')"
-            >Thử chỗ mới ✨</span
-          >
-          <span class="hint-chip" onclick="addHint('Giờ về trước 10 tối 🌙')"
-            >Về trước 10pm 🌙</span
-          >
+          <span class="hint-chip" onclick="addHint('Thích cafe yên tĩnh ☕')">
+            Cafe yên tĩnh ☕
+          </span>
+
+          <span class="hint-chip" onclick="addHint('Thích chụp ảnh 📸')">
+            Thích chụp ảnh 📸
+          </span>
+
+          <span class="hint-chip" onclick="addHint('Muốn đi dạo 🚶')">
+            Đi dạo 🚶
+          </span>
+
+          <span class="hint-chip" onclick="addHint('Muốn thử chỗ mới ✨')">
+            Chỗ mới ✨
+          </span>
+
+          <span class="hint-chip" onclick="addHint('Thích ngắm hoàng hôn 🌅')">
+            Hoàng hôn 🌅
+          </span>
         </div>
+
         <textarea
           class="notes-area"
           id="notes-input"
-          placeholder="Dị ứng món gì? Không ăn được gì? Muốn đi đâu?&#10;&#10;Mình sẽ chú ý để mọi thứ thật hoàn hảo nhé 💕"
+          placeholder="Có điều gì mình nên biết không? 😊
+
+Ví dụ:
+• Món ăn yêu thích
+• Nơi muốn đi
+• Điều bạn thích hoặc không thích
+
+Mình sẽ cố gắng chuẩn bị một buổi hẹn thật vui 💕"
           rows="5"
         ></textarea>
         <button
@@ -1116,47 +1147,23 @@
 
       const activities = [
         { e: "🍽️", n: "Đi ăn" },
-        { e: "🧋", n: "Trà sữa" },
         { e: "☕", n: "Cafe" },
+        { e: "🧋", n: "Trà sữa" },
         { e: "🎬", n: "Xem phim" },
         { e: "🚶", n: "Đi dạo" },
-        { e: "🎳", n: "Bowling" },
         { e: "🎱", n: "Bida" },
-        { e: "🎡", n: "Khu vui chơi" },
-        { e: "🦁", n: "Sở thú" },
-        { e: "🐠", n: "Aquarium" },
-        { e: "🧺", n: "Picnic" },
         { e: "📸", n: "Chụp ảnh" },
         { e: "🌅", n: "Ngắm hoàng hôn" },
-        { e: "🎮", n: "Gaming cafe" },
-        { e: "🍦", n: "Ăn kem" },
-        { e: "🛍️", n: "Đi mua sắm" },
-        { e: "🎨", n: "Vẽ tranh" },
-        { e: "🎵", n: "Karaoke" },
-        { e: "🚲", n: "Đạp xe" },
-        { e: "🏊", n: "Bơi lội" },
-        { e: "🎯", n: "Bắn cung" },
-        { e: "🌸", n: "Ngắm hoa" },
-        { e: "🌃", n: "Ngắm thành phố" },
-        { e: "🎪", n: "Hội chợ" },
-        { e: "🧁", n: "Làm bánh" },
-        { e: "📚", n: "Tiệm sách" },
-        { e: "🌊", n: "Biển" },
-        { e: "⛺", n: "Cắm trại" },
-        { e: "🏃", n: "Chạy bộ" },
-        { e: "🎠", n: "Công viên" },
       ];
       const foods = [
-        { e: "🍣", n: "Sushi" },
+        { e: "🍲", n: "Lẩu (ăn chung)" },
+        { e: "🥩", n: "BBQ / Nướng" },
+        { e: "🍜", n: "Mì cay Hàn Quốc" },
         { e: "🍕", n: "Pizza" },
-        { e: "🍜", n: "Bún bò" },
-        { e: "🍗", n: "Gà rán" },
-        { e: "🥩", n: "BBQ" },
-        { e: "🍝", n: "Pasta" },
-        { e: "🍱", n: "Cơm hộp" },
-        { e: "🌮", n: "Tacos" },
-        { e: "🍲", n: "Lẩu" },
-        { e: "🥗", n: "Salad" },
+        { e: "🍗", n: "Gà rán / Gà nướng" },
+        { e: "🍱", n: "Cơm phần nhẹ" },
+        { e: "🍣", n: "Đồ Nhật (Sushi / Ramen)" },
+        { e: "🥗", n: "Healthy / Salad nhẹ" },
       ];
       const noMessages = [
         "Are you sure? 🥺",
@@ -1455,7 +1462,10 @@
           state.selectedActivities.length;
       }
       function validateActivities() {
-        if (state.selectedActivities.length === 0) {
+        const otherAct = document
+          .getElementById("activity-other-input")
+          .value.trim();
+        if (state.selectedActivities.length === 0 && !otherAct) {
           alert("Chọn ít nhất 1 hoạt động nha! 🥺");
           return;
         }
@@ -1495,13 +1505,22 @@
       // SUMMARY
       function buildSummary() {
         state.notes = document.getElementById("notes-input").value;
-        const otherFood = document.getElementById("food-other-input").value;
+        const otherFood = document
+          .getElementById("food-other-input")
+          .value.trim();
         const allFoods = [...state.selectedFoods];
         if (otherFood) allFoods.push(otherFood);
+
+        const otherAct = document
+          .getElementById("activity-other-input")
+          .value.trim();
+        const allActs = [...state.selectedActivities];
+        if (otherAct) allActs.push(otherAct);
+
         document.getElementById("summary-content").innerHTML = `
     <div class="summary-row"><div class="summary-icon">📅</div><div><div class="summary-label">Date</div><div class="summary-val">${state.selectedDate ? formatDate(state.selectedDate) : "-"}</div></div></div>
     <div class="summary-row"><div class="summary-icon">🕒</div><div><div class="summary-label">Time</div><div class="summary-val">${state.selectedTime}</div></div></div>
-    <div class="summary-row"><div class="summary-icon">🎯</div><div><div class="summary-label">Activities</div><div class="summary-val">${state.selectedActivities.length ? state.selectedActivities.map((a) => `<span class="tag">${a}</span>`).join("") : '<span class="tag">Chưa chọn</span>'}</div></div></div>
+    <div class="summary-row"><div class="summary-icon">🎯</div><div><div class="summary-label">Activities</div><div class="summary-val">${allActs.length ? allActs.map((a) => `<span class="tag">${a}</span>`).join("") : '<span class="tag">Chưa chọn</span>'}</div></div></div>
     <div class="summary-row"><div class="summary-icon">🍜</div><div><div class="summary-label">Food</div><div class="summary-val">${allFoods.length ? allFoods.map((f) => `<span class="tag">${f}</span>`).join("") : '<span class="tag">Tùy cơ ứng biến 😄</span>'}</div></div></div>
     ${state.notes ? `<div class="summary-row"><div class="summary-icon">📝</div><div><div class="summary-label">Note</div><div class="summary-val" style="white-space:pre-line;font-size:.88rem">${state.notes.trim()}</div></div></div>` : ""}
   `;
@@ -1517,10 +1536,18 @@
         // Show sending overlay
         document.getElementById("sending-overlay").classList.add("show");
 
-        // Lấy food
-        const otherFood = document.getElementById("food-other-input").value;
+        // Lấy food & activity
+        const otherFood = document
+          .getElementById("food-other-input")
+          .value.trim();
         const allFoods = [...state.selectedFoods];
         if (otherFood) allFoods.push(otherFood);
+
+        const otherAct = document
+          .getElementById("activity-other-input")
+          .value.trim();
+        const allActs = [...state.selectedActivities];
+        if (otherAct) allActs.push(otherAct);
 
         // Gửi mail qua Formspree
         try {
@@ -1535,12 +1562,10 @@
               _subject: "💖 It's a date! Câu trả lời hẹn hò đã về rồi!",
               date: state.selectedDate ? formatDate(state.selectedDate) : "-",
               time: state.selectedTime,
-              activities: state.selectedActivities.length
-                ? state.selectedActivities.join(", ")
-                : "Chưa chọn",
+              activities: allActs.length ? allActs.join(", ") : "Chưa chọn",
               food: allFoods.length ? allFoods.join(", ") : "Tùy cơ ứng biến",
               notes: state.notes.trim() || "(Không có ghi chú)",
-              message: `💖 Mình đồng ý đi hẹn hò rồi nha!\n\n📅 Ngày: ${state.selectedDate ? formatDate(state.selectedDate) : "-"}\n🕒 Giờ: ${state.selectedTime}\n🎯 Muốn làm: ${state.selectedActivities.join(", ") || "Tùy bạn"}\n🍜 Muốn ăn: ${allFoods.join(", ") || "Tùy cơ ứng biến"}${state.notes.trim() ? "\n📝 Ghi chú: " + state.notes.trim() : ""}`,
+              message: `💖 Mình đồng ý đi hẹn hò rồi nha!\n\n📅 Ngày: ${state.selectedDate ? formatDate(state.selectedDate) : "-"}\n🕒 Giờ: ${state.selectedTime}\n🎯 Muốn làm: ${allActs.join(", ") || "Tùy bạn"}\n🍜 Muốn ăn: ${allFoods.join(", ") || "Tùy cơ ứng biến"}${state.notes.trim() ? "\n📝 Ghi chú: " + state.notes.trim() : ""}`,
             }),
           });
         } catch (e) {
