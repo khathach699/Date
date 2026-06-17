@@ -8,7 +8,6 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Dancing+Script:wght@700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
       * {
         margin: 0;
@@ -20,17 +19,8 @@
         --pink-light: #ffb3d1;
         --pink-pale: #fff0f6;
         --purple: #c084fc;
-        --purple-light: #e9d5ff;
-        --purple-pale: #faf5ff;
-        --rose: #fb7185;
-        --peach: #ffd6cc;
         --text: #4a1942;
         --text-muted: #9d6b9d;
-        --white: #ffffff;
-        --cream: #fff8fc;
-        --shadow: 0 8px 32px rgba(255, 107, 157, 0.18);
-        --radius: 24px;
-        --radius-sm: 14px;
       }
       body {
         font-family: "Nunito", sans-serif;
@@ -44,8 +34,6 @@
         color: var(--text);
         overflow-x: hidden;
       }
-
-      /* Floating hearts background */
       .hearts-bg {
         position: fixed;
         top: 0;
@@ -60,7 +48,6 @@
         position: absolute;
         animation: floatUp linear infinite;
         opacity: 0;
-        font-size: 20px;
         user-select: none;
       }
       @keyframes floatUp {
@@ -79,8 +66,6 @@
           opacity: 0;
         }
       }
-
-      /* Cursor sparkle */
       .sparkle {
         position: fixed;
         pointer-events: none;
@@ -97,8 +82,6 @@
           opacity: 0;
         }
       }
-
-      /* Screens */
       .screen {
         display: none;
         min-height: 100vh;
@@ -112,8 +95,6 @@
       .screen.active {
         display: flex;
       }
-
-      /* Cards */
       .card {
         background: white;
         border-radius: 32px;
@@ -137,8 +118,6 @@
           opacity: 1;
         }
       }
-
-      /* Typography */
       h1 {
         font-family: "Dancing Script", cursive;
         font-size: 2.8rem;
@@ -172,8 +151,6 @@
           transform: translateY(-10px);
         }
       }
-
-      /* Buttons */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -186,7 +163,6 @@
         font-size: 1.05rem;
         cursor: pointer;
         transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-        text-decoration: none;
       }
       .btn-primary {
         background: linear-gradient(135deg, var(--pink), var(--purple));
@@ -195,7 +171,6 @@
       }
       .btn-primary:hover {
         transform: scale(1.06) translateY(-2px);
-        box-shadow: 0 10px 28px rgba(255, 107, 157, 0.45);
       }
       .btn-primary:active {
         transform: scale(0.97);
@@ -209,7 +184,7 @@
         background: var(--pink-pale);
       }
 
-      /* ===================== SCREEN 1: LANDING ===================== */
+      /* SCREEN 1 */
       .mascot-bear {
         width: 120px;
         height: 120px;
@@ -238,8 +213,6 @@
           transform: scale(1.3);
         }
       }
-
-      /* YES/NO button layout — stacked on mobile, side-by-side room allowing */
       #btn-row {
         display: flex;
         flex-direction: column;
@@ -257,9 +230,7 @@
         transition:
           transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
           padding 0.3s,
-          font-size 0.3s,
-          box-shadow 0.3s;
-        will-change: transform;
+          font-size 0.3s;
         white-space: nowrap;
       }
       #btn-no {
@@ -273,11 +244,8 @@
           opacity 0.3s,
           font-size 0.3s,
           padding 0.3s;
-        will-change: transform;
         white-space: nowrap;
-        /* Use relative positioning; JS will nudge via transform only */
       }
-
       .message-bubble {
         background: linear-gradient(135deg, #fff0f6, #f5e9ff);
         border-radius: 20px;
@@ -301,7 +269,7 @@
         }
       }
 
-      /* ===================== SCREEN 2: YAY ===================== */
+      /* CONFETTI */
       #confetti-canvas {
         position: fixed;
         top: 0;
@@ -312,7 +280,7 @@
         z-index: 0;
       }
 
-      /* ===================== SCREEN 3: DATE PICKER ===================== */
+      /* DATE PICKER */
       .date-time-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -321,7 +289,7 @@
       }
       .dt-box {
         background: var(--pink-pale);
-        border-radius: var(--radius-sm);
+        border-radius: 14px;
         padding: 1rem;
         border: 2px solid transparent;
         cursor: pointer;
@@ -345,8 +313,6 @@
         font-weight: 800;
         color: var(--text);
       }
-
-      /* Calendar */
       .calendar-wrap {
         background: white;
         border-radius: 20px;
@@ -426,8 +392,6 @@
       .cal-day.empty {
         cursor: default;
       }
-
-      /* Time picker */
       .time-wrap {
         display: none;
         margin-top: 1rem;
@@ -461,7 +425,7 @@
         cursor: pointer;
       }
 
-      /* ===================== SCREEN 4: ACTIVITIES ===================== */
+      /* ACTIVITIES */
       .activities-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -506,11 +470,7 @@
         margin-bottom: 0.3rem;
       }
       .select-counter {
-        background: linear-gradient(
-          135deg,
-          var(--pink-pale),
-          var(--purple-pale)
-        );
+        background: linear-gradient(135deg, var(--pink-pale), #faf5ff);
         border-radius: 12px;
         padding: 0.6rem 1rem;
         margin: 0.8rem 0;
@@ -524,7 +484,7 @@
         font-weight: 900;
       }
 
-      /* ===================== SCREEN 5: FOOD ===================== */
+      /* FOOD */
       .food-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -575,7 +535,7 @@
         color: var(--text);
       }
 
-      /* ===================== SCREEN 6: NOTES ===================== */
+      /* NOTES */
       .notes-area {
         width: 100%;
         min-height: 150px;
@@ -615,7 +575,7 @@
         border-color: var(--pink);
       }
 
-      /* ===================== SCREEN 7: SUMMARY ===================== */
+      /* SUMMARY */
       .summary-card {
         background: linear-gradient(135deg, white, #fff8fc);
         border: 2px solid var(--pink-light);
@@ -665,7 +625,7 @@
         border: 1.5px solid var(--pink-light);
       }
 
-      /* ===================== SCREEN 8: FINAL ===================== */
+      /* FINAL */
       .hearts-rain {
         position: fixed;
         top: 0;
@@ -709,7 +669,7 @@
         margin-top: 0.3rem;
       }
 
-      /* Progress dots */
+      /* PROGRESS */
       .progress-dots {
         display: flex;
         gap: 0.5rem;
@@ -729,7 +689,55 @@
         border-radius: 4px;
       }
 
-      /* Scrollbar */
+      /* SENDING OVERLAY */
+      #sending-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        background: rgba(255, 240, 246, 0.85);
+        backdrop-filter: blur(4px);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      #sending-overlay.show {
+        display: flex;
+      }
+      .sending-card {
+        background: white;
+        border-radius: 28px;
+        padding: 2rem 2.5rem;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(255, 107, 157, 0.2);
+        border: 1.5px solid var(--pink-light);
+      }
+      .sending-spinner {
+        width: 52px;
+        height: 52px;
+        border: 4px solid var(--pink-light);
+        border-top-color: var(--pink);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 0 auto 1rem;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .sending-text {
+        font-weight: 800;
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+      .sending-sub {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        margin-top: 0.3rem;
+      }
+
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -741,28 +749,6 @@
         border-radius: 3px;
       }
 
-      /* Email sending toast */
-      #toast {
-        position: fixed;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%) translateY(100px);
-        background: var(--text);
-        color: white;
-        padding: 0.9rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 0.95rem;
-        z-index: 9999;
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        white-space: nowrap;
-        pointer-events: none;
-      }
-      #toast.show {
-        transform: translateX(-50%) translateY(0);
-      }
-
-      /* Responsive */
       @media (max-width: 480px) {
         h1 {
           font-size: 2.2rem;
@@ -788,7 +774,15 @@
   <body>
     <div class="hearts-bg" id="hearts-bg"></div>
     <canvas id="confetti-canvas"></canvas>
-    <div id="toast"></div>
+
+    <!-- Sending overlay -->
+    <div id="sending-overlay">
+      <div class="sending-card">
+        <div class="sending-spinner"></div>
+        <div class="sending-text">Đang gửi câu trả lời... 💌</div>
+        <div class="sending-sub">từ vuongthach699 → khathach699</div>
+      </div>
+    </div>
 
     <!-- ========== SCREEN 1: LANDING ========== -->
     <div class="screen active" id="screen-landing">
@@ -798,8 +792,6 @@
         <br />
         <h1>Will you go on<br />a date with me?</h1>
         <p class="subtitle">I promise it'll be the best time ever 🌸</p>
-
-        <!-- Stacked layout: Yes on top, No below — no absolute positioning -->
         <div id="btn-row">
           <button class="btn btn-primary" id="btn-yes" onclick="handleYes()">
             Yes! 🥰
@@ -851,7 +843,6 @@
         <span style="font-size: 2.5rem">🌸</span>
         <h2>When should our<br />adventure begin?</h2>
         <p class="subtitle">Pick the perfect day and time</p>
-
         <div class="date-time-grid">
           <div class="dt-box active" id="date-box" onclick="toggleCal()">
             <div class="dt-label">📅 Date</div>
@@ -862,7 +853,6 @@
             <div class="dt-value" id="time-display">18:30</div>
           </div>
         </div>
-
         <div class="calendar-wrap" id="cal-wrap">
           <div class="cal-header">
             <button class="cal-nav" onclick="changeMonth(-1)">‹</button>
@@ -871,7 +861,6 @@
           </div>
           <div class="cal-grid" id="cal-grid"></div>
         </div>
-
         <div class="time-wrap" id="time-wrap">
           <div class="time-display" id="time-big">18:30</div>
           <div class="time-sliders">
@@ -900,7 +889,6 @@
             </div>
           </div>
         </div>
-
         <button
           class="btn btn-primary"
           style="width: 100%; margin-top: 1.5rem"
@@ -924,13 +912,10 @@
         <span style="font-size: 2.5rem">✨</span>
         <h2>What sounds fun?</h2>
         <p class="subtitle">Chọn tối đa 3 hoạt động yêu thích</p>
-
         <div class="select-counter">
           Đã chọn: <span class="counter-num" id="act-count">0</span> / 3
         </div>
-
         <div class="activities-grid" id="activities-grid"></div>
-
         <button
           class="btn btn-primary"
           style="width: 100%; margin-top: 1.2rem"
@@ -954,9 +939,7 @@
         <span style="font-size: 2.5rem">🍜</span>
         <h2>What would you<br />like to eat?</h2>
         <p class="subtitle">Chọn tối đa 3 món ngon</p>
-
         <div class="food-grid" id="food-grid"></div>
-
         <div class="food-other">
           <div
             style="
@@ -972,17 +955,8 @@
             type="text"
             placeholder="Món yêu thích của bạn..."
             id="food-other-input"
-            style="
-              width: 100%;
-              border: none;
-              outline: none;
-              font-family: Nunito, sans-serif;
-              font-size: 1rem;
-              color: var(--text);
-            "
           />
         </div>
-
         <button
           class="btn btn-primary"
           style="width: 100%; margin-top: 1rem"
@@ -1006,7 +980,6 @@
         <span style="font-size: 2.5rem">🌷</span>
         <h2>Anything I<br />should know?</h2>
         <p class="subtitle">Chia sẻ thêm một chút nhé 🥺</p>
-
         <div class="notes-hints">
           <span class="hint-chip" onclick="addHint('Không ăn cay 🌶️')"
             >Không ăn cay 🌶️</span
@@ -1024,14 +997,12 @@
             >Về trước 10pm 🌙</span
           >
         </div>
-
         <textarea
           class="notes-area"
           id="notes-input"
-          placeholder="Dị ứng món gì? Không ăn được gì? Muốn đi đâu? Gợi ý thêm?&#10;&#10;Mình sẽ chú ý để mọi thứ thật hoàn hảo nhé 💕"
+          placeholder="Dị ứng món gì? Không ăn được gì? Muốn đi đâu?&#10;&#10;Mình sẽ chú ý để mọi thứ thật hoàn hảo nhé 💕"
           rows="5"
         ></textarea>
-
         <button
           class="btn btn-primary"
           style="width: 100%; margin-top: 1rem"
@@ -1054,13 +1025,12 @@
         </div>
         <span style="font-size: 2.5rem">💖</span>
         <h2>Date Summary</h2>
-        <p class="subtitle">Kiểm tra lại trước khi xác nhận nha!</p>
-
+        <p class="subtitle">Kiểm tra lại rồi xác nhận nha!</p>
         <div class="summary-card" id="summary-content"></div>
-
         <button
           class="btn btn-primary"
           style="width: 100%; margin-top: 1rem"
+          id="confirm-btn"
           onclick="confirmDate()"
         >
           Confirm 💕
@@ -1086,7 +1056,6 @@
         <p style="font-size: 1.1rem; color: var(--text-muted); margin: 1rem 0">
           I can't wait to see you. 🌸
         </p>
-
         <div class="countdown-wrap">
           <p
             style="
@@ -1119,45 +1088,22 @@
             </div>
           </div>
         </div>
-
-        <p style="color: var(--text-muted); font-size: 0.9rem">
-          Hẹn gặp lại sớm nhé 💕<br /><span
-            id="final-date-display"
-            style="font-weight: 700; color: var(--pink)"
-          ></span>
-        </p>
-
-        <button
-          class="btn btn-primary"
-          id="btn-share"
-          style="width: 100%; margin-top: 1.5rem"
-          onclick="shareAnswer()"
-        >
-          💌 Gửi câu trả lời này
-        </button>
         <p
-          id="share-fallback-msg"
-          style="
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.7rem;
-            line-height: 1.5;
-            display: none;
-          "
-        ></p>
+          style="color: var(--text-muted); font-size: 0.95rem; font-weight: 700"
+        >
+          <span id="final-date-display" style="color: var(--pink)"></span>
+        </p>
       </div>
     </div>
 
     <script>
-      // ========== EMAILJS CONFIG ==========
-      // Using EmailJS public key + service/template
-      // Template variables: {{date}}, {{time}}, {{activities}}, {{food}}, {{notes}}
-      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // <-- replace after EmailJS setup
-      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // <-- replace
-      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // <-- replace
-      const TO_EMAIL = "khathach699@gmail.com";
+      // ======================================================
+      //  🔧 CẤU HÌNH DUY NHẤT — thay endpoint Formspree vào đây
+      // ======================================================
+      const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeewwqal";
+      //  Bước: formspree.io → New Form → nhập khathach699@gmail.com → copy endpoint
+      // ======================================================
 
-      // ===== STATE =====
       const state = {
         selectedDate: null,
         selectedTime: "18:30",
@@ -1168,7 +1114,6 @@
         calMonth: 0,
       };
 
-      // ===== DATA =====
       const activities = [
         { e: "🍽️", n: "Đi ăn" },
         { e: "🧋", n: "Trà sữa" },
@@ -1222,20 +1167,14 @@
         "Just say YES already! 💝",
       ];
 
-      // ===== INIT =====
       document.addEventListener("DOMContentLoaded", () => {
         initHearts();
         initCursorSparkle();
         initCalendar();
         renderActivities();
         renderFoods();
-        // Init EmailJS
-        if (typeof emailjs !== "undefined") {
-          emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-        }
       });
 
-      // ===== FLOATING HEARTS =====
       function initHearts() {
         const bg = document.getElementById("hearts-bg");
         const emojis = ["💕", "💖", "💗", "💓", "✨", "🌸", "💝"];
@@ -1248,15 +1187,13 @@
         }
       }
 
-      // ===== CURSOR SPARKLE =====
       function initCursorSparkle() {
         document.addEventListener("click", (e) => {
-          const sparkles = ["✨", "💕", "🌸", "💫", "⭐"];
-          for (let i = 0; i < 5; i++) {
+          const sp = ["✨", "💕", "🌸", "💫", "⭐"];
+          for (let i = 0; i < 4; i++) {
             const s = document.createElement("div");
             s.className = "sparkle";
-            s.textContent =
-              sparkles[Math.floor(Math.random() * sparkles.length)];
+            s.textContent = sp[Math.floor(Math.random() * sp.length)];
             s.style.cssText = `left:${e.clientX + (Math.random() - 0.5) * 60}px;top:${e.clientY + (Math.random() - 0.5) * 60}px;font-size:${14 + Math.random() * 10}px;`;
             document.body.appendChild(s);
             setTimeout(() => s.remove(), 900);
@@ -1264,7 +1201,6 @@
         });
       }
 
-      // ===== LANDING LOGIC =====
       function handleYes() {
         startConfetti();
         setTimeout(() => goToScreen("screen-yay"), 300);
@@ -1275,37 +1211,22 @@
         const yesBtn = document.getElementById("btn-yes");
         const noBtn = document.getElementById("btn-no");
         const msgEl = document.getElementById("no-message");
-
         noCount++;
-
-        // Yes grows via transform (doesn't shift layout)
-        const yesScale = Math.min(1 + noCount * 0.13, 1.85);
-        yesBtn.style.transform = `scale(${yesScale})`;
-
-        // No shrinks, but only via font-size / padding — keeps layout stable
-        const noScale = Math.max(1 - noCount * 0.12, 0.35);
+        yesBtn.style.transform = `scale(${Math.min(1 + noCount * 0.13, 1.85)})`;
+        const s = Math.max(1 - noCount * 0.12, 0.35);
         noBtn.style.fontSize = `${Math.max(0.95 - noCount * 0.1, 0.4)}rem`;
         noBtn.style.padding = `${Math.max(0.85 - noCount * 0.1, 0.25)}rem ${Math.max(1.8 - noCount * 0.2, 0.4)}rem`;
-
-        // Wiggle the No button using transform (no layout disruption)
-        const wiggleX = (Math.random() - 0.5) * Math.min(noCount * 18, 90);
-        const wiggleY = (Math.random() - 0.5) * Math.min(noCount * 9, 40);
-        noBtn.style.transform = `translate(${wiggleX}px, ${wiggleY}px) scale(${noScale})`;
-
-        // Show message
+        noBtn.style.transform = `translate(${(Math.random() - 0.5) * Math.min(noCount * 18, 90)}px,${(Math.random() - 0.5) * Math.min(noCount * 9, 40)}px) scale(${s})`;
         if (noCount <= noMessages.length) {
           msgEl.textContent = noMessages[noCount - 1];
           msgEl.style.display = "block";
         }
-
-        // Hide No button after too many clicks
         if (noCount >= 6) {
           noBtn.style.opacity = "0";
           noBtn.style.pointerEvents = "none";
         }
       }
 
-      // ===== SCREEN TRANSITION =====
       function goToScreen(id) {
         document
           .querySelectorAll(".screen")
@@ -1319,7 +1240,7 @@
         window.scrollTo(0, 0);
       }
 
-      // ===== CONFETTI =====
+      // CONFETTI
       let confettiAnimId = null;
       function startConfetti() {
         const canvas = document.getElementById("confetti-canvas");
@@ -1341,7 +1262,7 @@
           r: 4 + Math.random() * 8,
           d: Math.random() * 120,
           color: colors[Math.floor(Math.random() * colors.length)],
-          tilt: Math.random() * 10 - 10,
+          tilt: 0,
           tiltAngle: 0,
           tiltAngleInc: 0.07 + Math.random() * 0.05,
         }));
@@ -1377,7 +1298,7 @@
         }, 6000);
       }
 
-      // ===== CALENDAR =====
+      // CALENDAR
       function initCalendar() {
         const now = new Date();
         state.calYear = now.getFullYear();
@@ -1419,11 +1340,7 @@
         const first = new Date(state.calYear, state.calMonth, 1);
         let startDay = first.getDay() - 1;
         if (startDay < 0) startDay = 6;
-        const daysInMonth = new Date(
-          state.calYear,
-          state.calMonth + 1,
-          0,
-        ).getDate();
+        const dim = new Date(state.calYear, state.calMonth + 1, 0).getDate();
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         for (let i = 0; i < startDay; i++) {
@@ -1431,7 +1348,7 @@
           el.className = "cal-day empty";
           grid.appendChild(el);
         }
-        for (let d = 1; d <= daysInMonth; d++) {
+        for (let d = 1; d <= dim; d++) {
           const date = new Date(state.calYear, state.calMonth, d);
           const el = document.createElement("div");
           el.className = "cal-day";
@@ -1511,7 +1428,7 @@
         goToScreen("screen-activities");
       }
 
-      // ===== ACTIVITIES =====
+      // ACTIVITIES
       function renderActivities() {
         const grid = document.getElementById("activities-grid");
         activities.forEach((a, i) => {
@@ -1545,7 +1462,7 @@
         goToScreen("screen-food");
       }
 
-      // ===== FOODS =====
+      // FOODS
       function renderFoods() {
         const grid = document.getElementById("food-grid");
         foods.forEach((f, i) => {
@@ -1568,21 +1485,20 @@
         }
       }
 
-      // ===== NOTES =====
+      // NOTES
       function addHint(text) {
         const ta = document.getElementById("notes-input");
         if (ta.value && !ta.value.endsWith("\n")) ta.value += "\n";
         ta.value += "• " + text + "\n";
       }
 
-      // ===== SUMMARY =====
+      // SUMMARY
       function buildSummary() {
         state.notes = document.getElementById("notes-input").value;
         const otherFood = document.getElementById("food-other-input").value;
         const allFoods = [...state.selectedFoods];
         if (otherFood) allFoods.push(otherFood);
-        const content = document.getElementById("summary-content");
-        content.innerHTML = `
+        document.getElementById("summary-content").innerHTML = `
     <div class="summary-row"><div class="summary-icon">📅</div><div><div class="summary-label">Date</div><div class="summary-val">${state.selectedDate ? formatDate(state.selectedDate) : "-"}</div></div></div>
     <div class="summary-row"><div class="summary-icon">🕒</div><div><div class="summary-label">Time</div><div class="summary-val">${state.selectedTime}</div></div></div>
     <div class="summary-row"><div class="summary-icon">🎯</div><div><div class="summary-label">Activities</div><div class="summary-val">${state.selectedActivities.length ? state.selectedActivities.map((a) => `<span class="tag">${a}</span>`).join("") : '<span class="tag">Chưa chọn</span>'}</div></div></div>
@@ -1591,102 +1507,61 @@
   `;
       }
 
-      // ===== CONFIRM & SEND EMAIL =====
+      // ===================== CONFIRM + GỬI MAIL =====================
       async function confirmDate() {
+        // Disable nút tránh double-click
+        const btn = document.getElementById("confirm-btn");
+        btn.disabled = true;
+        btn.textContent = "Đang gửi... 💌";
+
+        // Show sending overlay
+        document.getElementById("sending-overlay").classList.add("show");
+
+        // Lấy food
+        const otherFood = document.getElementById("food-other-input").value;
+        const allFoods = [...state.selectedFoods];
+        if (otherFood) allFoods.push(otherFood);
+
+        // Gửi mail qua Formspree
+        try {
+          await fetch(FORMSPREE_ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              _replyto: "vuongthach699@gmail.com",
+              _subject: "💖 It's a date! Câu trả lời hẹn hò đã về rồi!",
+              date: state.selectedDate ? formatDate(state.selectedDate) : "-",
+              time: state.selectedTime,
+              activities: state.selectedActivities.length
+                ? state.selectedActivities.join(", ")
+                : "Chưa chọn",
+              food: allFoods.length ? allFoods.join(", ") : "Tùy cơ ứng biến",
+              notes: state.notes.trim() || "(Không có ghi chú)",
+              message: `💖 Mình đồng ý đi hẹn hò rồi nha!\n\n📅 Ngày: ${state.selectedDate ? formatDate(state.selectedDate) : "-"}\n🕒 Giờ: ${state.selectedTime}\n🎯 Muốn làm: ${state.selectedActivities.join(", ") || "Tùy bạn"}\n🍜 Muốn ăn: ${allFoods.join(", ") || "Tùy cơ ứng biến"}${state.notes.trim() ? "\n📝 Ghi chú: " + state.notes.trim() : ""}`,
+            }),
+          });
+        } catch (e) {
+          // Mail fail thì vẫn vào màn cuối, không block user
+          console.warn("Email send failed:", e);
+        }
+
+        // Ẩn overlay, chuyển màn hình
+        document.getElementById("sending-overlay").classList.remove("show");
         startConfetti();
         goToScreen("screen-final");
-        await sendEmail();
       }
 
-      async function sendEmail() {
-        const otherFood = document.getElementById("food-other-input").value;
-        const allFoods = [...state.selectedFoods];
-        if (otherFood) allFoods.push(otherFood);
-
-        const templateParams = {
-          to_email: TO_EMAIL,
-          date: state.selectedDate ? formatDate(state.selectedDate) : "-",
-          time: state.selectedTime,
-          activities: state.selectedActivities.length
-            ? state.selectedActivities.join(", ")
-            : "Chưa chọn",
-          food: allFoods.length ? allFoods.join(", ") : "Tùy cơ ứng biến",
-          notes: state.notes.trim() || "(Không có ghi chú)",
-        };
-
-        if (
-          typeof emailjs === "undefined" ||
-          EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"
-        ) {
-          console.log("EmailJS not configured. Date answer:", templateParams);
-          return;
-        }
-
-        try {
-          await emailjs.send(
-            EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-            templateParams,
-          );
-          showToast("📬 Đã gửi câu trả lời về cho người hỏi! 💌");
-        } catch (err) {
-          console.error("Email send failed:", err);
-        }
-      }
-
-      // ===== TOAST =====
-      function showToast(msg) {
-        const t = document.getElementById("toast");
-        t.textContent = msg;
-        t.classList.add("show");
-        setTimeout(() => t.classList.remove("show"), 4000);
-      }
-
-      // ===== SHARE =====
-      function buildShareText() {
-        const otherFood = document.getElementById("food-other-input").value;
-        const allFoods = [...state.selectedFoods];
-        if (otherFood) allFoods.push(otherFood);
-        let msg = `💖 Mình đồng ý đi hẹn hò rồi nha! 💖\n\n`;
-        msg += `📅 Ngày: ${state.selectedDate ? formatDate(state.selectedDate) : "-"}\n`;
-        msg += `🕒 Giờ: ${state.selectedTime}\n`;
-        msg += `🎯 Muốn làm: ${state.selectedActivities.length ? state.selectedActivities.join(", ") : "Tùy bạn quyết định"}\n`;
-        msg += `🍜 Muốn ăn: ${allFoods.length ? allFoods.join(", ") : "Tùy cơ ứng biến"}`;
-        if (state.notes && state.notes.trim())
-          msg += `\n📝 Ghi chú: ${state.notes.trim()}`;
-        return msg;
-      }
-      async function shareAnswer() {
-        const text = buildShareText();
-        const fallback = document.getElementById("share-fallback-msg");
-        if (navigator.share) {
-          try {
-            await navigator.share({ text });
-            return;
-          } catch (err) {
-            if (err && err.name === "AbortError") return;
-          }
-        }
-        try {
-          await navigator.clipboard.writeText(text);
-          fallback.textContent =
-            "✅ Đã copy câu trả lời! Dán vào Messenger / Zalo để gửi lại nha 💌";
-        } catch (err) {
-          fallback.style.whiteSpace = "pre-line";
-          fallback.textContent =
-            "📋 Bạn copy giúp đoạn này rồi gửi lại nha:\n\n" + text;
-        }
-        fallback.style.display = "block";
-      }
-
-      // ===== COUNTDOWN =====
+      // COUNTDOWN
       function startCountdown() {
         if (!state.selectedDate) return;
         const [h, m] = state.selectedTime.split(":");
         const target = new Date(state.selectedDate);
         target.setHours(parseInt(h), parseInt(m), 0, 0);
         document.getElementById("final-date-display").textContent =
-          `${formatDate(state.selectedDate)} lúc ${state.selectedTime} ✨`;
+          `${formatDate(state.selectedDate)} lúc ${state.selectedTime} 💕`;
         function update() {
           const diff = target - new Date();
           if (diff <= 0) {
@@ -1712,7 +1587,7 @@
         setInterval(update, 1000);
       }
 
-      // ===== HEARTS RAIN =====
+      // HEARTS RAIN
       function initHeartsRain() {
         const container = document.getElementById("hearts-rain");
         const emojis = ["💖", "💕", "💗", "💓", "💝", "🌸", "✨"];
